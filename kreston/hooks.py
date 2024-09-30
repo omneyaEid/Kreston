@@ -5,6 +5,12 @@ app_description = "Customization for Kreston Global"
 app_email = "omneyaeid827@gmail.com"
 app_license = "mit"
 
+
+doctype_js = {
+    "Lead" : "public/js/lead.js"
+}
+
+
 # Apps
 # ------------------
 
