@@ -7,6 +7,10 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "linked_doctype",
+  "column_break_lhyp",
+  "linked_service",
+  "section_break_psyg",
   "audit_group_leader",
   "audit_budget_table",
   "total_audit_budget",
@@ -23,8 +27,7 @@
   "column_break_ffxja",
   "audit_other",
   "audit_other_amount",
-  "total_audit_expenses",
-  "amended_from"
+  "total_audit_expenses"
  ],
  "fields": [
   {
@@ -35,7 +38,7 @@
   },
   {
    "fieldname": "audit_per_diem_amount",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Per Diem Amount"
   },
   {
@@ -50,7 +53,7 @@
   },
   {
    "fieldname": "audit_car_amount",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Car Amount"
   },
   {
@@ -65,7 +68,7 @@
   },
   {
    "fieldname": "audit_ticket_amount",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Ticket Amount"
   },
   {
@@ -80,30 +83,13 @@
   },
   {
    "fieldname": "audit_other_amount",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Other Amounts"
   },
   {
    "fieldname": "total_audit_expenses",
-   "fieldtype": "Data",
-   "label": "Total VAT Expenses"
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "VAT Service",
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "VAT Service",
-   "print_hide": 1,
+   "fieldtype": "Float",
+   "label": "Total VAT Expenses",
    "read_only": 1
   },
   {
@@ -116,28 +102,48 @@
    "fieldname": "audit_budget_table",
    "fieldtype": "Table",
    "label": "VAT Budget Table",
-   "options": "Audit Budget Table"
+   "options": "Service Budget"
   },
   {
    "fieldname": "total_audit_budget",
-   "fieldtype": "Data",
-   "label": "Total VAT Budget"
+   "fieldtype": "Float",
+   "label": "Total VAT Budget",
+   "read_only": 1
   },
   {
    "fieldname": "audit_write_up_down",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "VAT Write Up/Down"
   },
   {
    "fieldname": "audit_expenses_section",
    "fieldtype": "Section Break",
    "label": "VAT Expenses"
+  },
+  {
+   "fieldname": "linked_doctype",
+   "fieldtype": "Link",
+   "label": "Linked Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "column_break_lhyp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "linked_service",
+   "fieldtype": "Dynamic Link",
+   "label": "Linked Service",
+   "options": "linked_doctype"
+  },
+  {
+   "fieldname": "section_break_psyg",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
  "links": [],
- "modified": "2024-10-05 00:20:47.629128",
+ "modified": "2024-10-05 14:24:37.972993",
  "modified_by": "Administrator",
  "module": "Kreston",
  "name": "VAT Service",

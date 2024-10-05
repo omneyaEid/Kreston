@@ -7,6 +7,10 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "linked_doctype",
+  "column_break_kerm",
+  "linked_service",
+  "section_break_fkxk",
   "audit_group_leader",
   "audit_budget_table",
   "total_audit_budget",
@@ -23,8 +27,7 @@
   "column_break_ffxja",
   "audit_other",
   "audit_other_amount",
-  "total_audit_expenses",
-  "amended_from"
+  "total_audit_expenses"
  ],
  "fields": [
   {
@@ -37,12 +40,13 @@
    "fieldname": "audit_budget_table",
    "fieldtype": "Table",
    "label": "Special Report Budget Table",
-   "options": "Audit Budget Table"
+   "options": "Service Budget"
   },
   {
    "fieldname": "total_audit_budget",
    "fieldtype": "Data",
-   "label": "Special Report VAT Budget"
+   "label": "Special Report VAT Budget",
+   "read_only": 1
   },
   {
    "fieldname": "audit_write_up_down",
@@ -113,22 +117,33 @@
   {
    "fieldname": "total_audit_expenses",
    "fieldtype": "Data",
-   "label": "Total Special Report Expenses"
+   "label": "Total Special Report Expenses",
+   "read_only": 1
   },
   {
-   "fieldname": "amended_from",
+   "fieldname": "linked_doctype",
    "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Special Report Service",
-   "print_hide": 1,
-   "read_only": 1
+   "label": "Linked Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "column_break_kerm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "linked_service",
+   "fieldtype": "Dynamic Link",
+   "label": "Linked Service",
+   "options": "linked_doctype"
+  },
+  {
+   "fieldname": "section_break_fkxk",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
  "links": [],
- "modified": "2024-10-05 00:32:58.137453",
+ "modified": "2024-10-05 14:18:13.579265",
  "modified_by": "Administrator",
  "module": "Kreston",
  "name": "Special Report Service",

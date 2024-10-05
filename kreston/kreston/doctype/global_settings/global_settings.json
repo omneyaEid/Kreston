@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-10-05 22:44:13.554358",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "move_to_grey_area",
+  "column_break_gesf",
+  "move_to_lead"
+ ],
+ "fields": [
+  {
+   "fieldname": "move_to_grey_area",
+   "fieldtype": "Date",
+   "label": "Move To Grey Area"
+  },
+  {
+   "fieldname": "column_break_gesf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "move_to_lead",
+   "fieldtype": "Date",
+   "label": "Move To Lead"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-10-05 22:44:59.406522",
+ "modified_by": "Administrator",
+ "module": "Kreston",
+ "name": "Global Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

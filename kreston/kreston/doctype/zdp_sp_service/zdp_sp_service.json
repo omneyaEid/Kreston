@@ -7,6 +7,10 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "linked_doctype",
+  "column_break_gqiw",
+  "linked_service",
+  "section_break_vkne",
   "audit_group_leader",
   "audit_budget_table",
   "total_audit_budget",
@@ -23,8 +27,7 @@
   "column_break_ffxja",
   "audit_other",
   "audit_other_amount",
-  "total_audit_expenses",
-  "amended_from"
+  "total_audit_expenses"
  ],
  "fields": [
   {
@@ -37,16 +40,17 @@
    "fieldname": "audit_budget_table",
    "fieldtype": "Table",
    "label": "ZDP SP Budget Table",
-   "options": "Audit Budget Table"
+   "options": "Service Budget"
   },
   {
    "fieldname": "total_audit_budget",
-   "fieldtype": "Data",
-   "label": "ZDP SP VAT Budget"
+   "fieldtype": "Float",
+   "label": "ZDP SP VAT Budget",
+   "read_only": 1
   },
   {
    "fieldname": "audit_write_up_down",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "ZDP SP Write Up/Down"
   },
   {
@@ -62,7 +66,7 @@
   },
   {
    "fieldname": "audit_per_diem_amount",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Per Diem Amount"
   },
   {
@@ -77,7 +81,7 @@
   },
   {
    "fieldname": "audit_car_amount",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Car Amount"
   },
   {
@@ -92,7 +96,7 @@
   },
   {
    "fieldname": "audit_ticket_amount",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Ticket Amount"
   },
   {
@@ -107,28 +111,39 @@
   },
   {
    "fieldname": "audit_other_amount",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Other Amounts"
   },
   {
    "fieldname": "total_audit_expenses",
-   "fieldtype": "Data",
-   "label": "Total ZDP SP Expenses"
+   "fieldtype": "Float",
+   "label": "Total ZDP SP Expenses",
+   "read_only": 1
   },
   {
-   "fieldname": "amended_from",
+   "fieldname": "linked_doctype",
    "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "ZDP SP Service",
-   "print_hide": 1,
-   "read_only": 1
+   "label": "Linked Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "column_break_gqiw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "linked_service",
+   "fieldtype": "Dynamic Link",
+   "label": "Linked Service",
+   "options": "linked_doctype"
+  },
+  {
+   "fieldname": "section_break_vkne",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
  "links": [],
- "modified": "2024-10-05 00:28:37.984957",
+ "modified": "2024-10-05 14:23:03.806225",
  "modified_by": "Administrator",
  "module": "Kreston",
  "name": "ZDP SP Service",

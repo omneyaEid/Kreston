@@ -6,10 +6,20 @@ app_email = "omneyaeid827@gmail.com"
 app_license = "mit"
 
 
-doctype_js = {
-    "Lead" : "public/js/lead.js"
+doctype_js = {"Lead": "public/js/lead.js"}
+
+override_doctype_dashboards = {"Lead": "kreston.dashboard.lead.get_data"}
+
+doc_events = {
+    "Lead": {
+        "after_insert": "kreston.events.lead.after_insert",
+        "on_update": "kreston.events.lead.on_update",
+    }
 }
 
+doctype_list_js = {
+    "Lead": "public/js/lead_list.js"
+}
 
 # Apps
 # ------------------
@@ -247,4 +257,3 @@ doctype_js = {
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-
