@@ -53,8 +53,8 @@ def calc_lead_totals(doctype, name):
     }
 
 
-
-
+import json
+from frappe.utils import getdate
 
 @frappe.whitelist()
 def move_to_grey_area(lead_names):
@@ -63,9 +63,8 @@ def move_to_grey_area(lead_names):
             lead_names = json.loads(lead_names)
 
         move_to_grey_area = frappe.db.get_single_value("Global Settings", "move_to_grey_area")
-        if move_to_grey_area != getdate() :
-            frappe.throw(f"Could not Move to grey area, only allow in  {move_to_grey_area}")
-
+        if move_to_grey_area != getdate():
+            frappe.throw(f"Could not move to grey area, only allowed on {move_to_grey_area}")
 
         # Get the meta data for the Grey Area doctype
         grey_area_meta = frappe.get_meta("Grey Area")
@@ -73,7 +72,7 @@ def move_to_grey_area(lead_names):
 
         for lead_name in lead_names:
             lead_doc = frappe.get_doc("Lead", lead_name)
-            if lead_doc.custom_pipeline_status in [ "Win","Lost Fit"]:
+            if lead_doc.custom_pipeline_status in ["Win", "Lost Fit"]:
                 # Create a new Grey Area document
                 grey_area_doc = frappe.new_doc("Grey Area")
 
@@ -87,26 +86,34 @@ def move_to_grey_area(lead_names):
                         grey_area_doc.set(fieldname, lead_doc.get(fieldname))
 
                 # Insert the new Grey Area document
-                grey_area_doc.insert(ignore_permissions=True,ignore_mandatory=True)
+                grey_area_doc.insert(ignore_permissions=True, ignore_mandatory=True)
 
                 # Loop through the services and check if linked_service matches the lead_name
                 for service in services:
-                    # Try to fetch the service record where linked_service matches the lead_name
+                    # Fetch the service records where linked_service matches the lead_name
                     service_docs = frappe.get_all(service, filters={"linked_service": lead_name}, fields=["name", "linked_service"])
 
                     for service_doc in service_docs:
-                        # If the linked_service matches lead_name, update it
-                        if service_doc.get("linked_service") == lead_name:
-                            # Update the service document to reference the new Grey Area document name
-                            service_record = frappe.get_doc(service, service_doc["name"])
-                            service_record.linked_service = grey_area_doc.name
-                            service_record.linked_doctype = "Grey Area"  # Ensure the linked_doctype is updated
-                            service_record.save(ignore_permissions=True)
+                        # Get the service record
+                        service_record = frappe.get_doc(service, service_doc["name"])
 
-                # Optionally, delete the lead after updating the linked services
-                lead_doc.delete(ignore_permissions=True)
+                        # Create a copy of the service record
+                        new_service_doc = frappe.copy_doc(service_record)
+
+                        # Update the linked_service field to the Grey Area doc
+                        new_service_doc.linked_doctype = "Grey Area" 
+                        new_service_doc.linked_service = grey_area_doc.name
+
+                        # Insert the copied service document
+                        new_service_doc.insert(ignore_permissions=True, ignore_mandatory=True)
+
+                # Archive the lead after updating the linked services
+                lead_doc.custom_archive = 1
+                lead_doc.custom_grey_area = grey_area_doc.name
+                lead_doc.save(ignore_permissions=True)
 
         return {"message": "Leads moved to Grey Area and services updated successfully."}
-    
+
     except Exception as e:
         frappe.throw(str(e))
+    

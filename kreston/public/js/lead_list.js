@@ -2,7 +2,12 @@
 // For license information, please see license.txt
 
 frappe.listview_settings['Lead'].onload = function (listview) {
-    // add button to menu
+    // Add filter to hide items where custom_archive = 0
+    listview.filter_area.add([
+        ["Lead", "custom_archive", "=", "0"]
+    ]);
+
+    // Add "Move To Grey Area" button to the menu
     listview.page.add_action_item(__("Move To Grey Area"), function () {
         moveToGreyArea(listview);
     });

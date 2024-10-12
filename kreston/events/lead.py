@@ -23,6 +23,47 @@ def on_update(doc, method=None):
             doc.custom_client_number = 400 + get_last_sequance()
         else:
             doc.custom_client_number = ""
+    
+    if (status_updated or new_status) and doc.custom_pipeline_status in ["Lost Fit", "Lost Not Fit"]:
+        doc.custom_last_status = old_doc.custom_pipeline_status
+
+
+def validate(doc, method=None):
+    service_mapping = {
+        "custom_audit": "Audit Service",
+        "custom_audit_sp": "Audit SP Service",
+        "custom_z_cases": "Z Cases Service",
+        "custom_zdp_sp": "ZDP SP Service",
+        "custom_vat": "VAT Service",
+        "custom_vat_cases": "VAT Cases Service",
+        "custom_aup": "AUP Service",
+        "custom_lc": "LC Service",
+        "custom_zakat": "Zakat Service",
+        "custom_tax": "Tax Service",
+        "custom_som": "SOM Service",
+        "custom_vdp_sp": "VDP SP Service",
+    }
+
+    missing_services = []
+
+    for custom_field, service_type in service_mapping.items():
+        # Check if the custom field on the doc is set to 1 (True)
+        if getattr(doc, custom_field, 0) == 1:
+            # Fetch the service linked to this document (doc.name) from the corresponding service Doctype
+            linked_services = frappe.get_all(
+                service_type,  # Dynamically refer to the Doctype from the mapping
+                filters={"linked_service": doc.name},
+                fields=["name"]
+            )
+
+            # If no linked service is found, add to missing_services list
+            if not linked_services:
+                missing_services.append(service_type)
+
+    # If there are any missing services, throw a validation error listing all
+    if missing_services:
+        missing_list = ",".join(missing_services)
+        frappe.throw(f"The following required services are missing for {doc.name}:\n{missing_list}")
 
 
 def get_last_sequance():

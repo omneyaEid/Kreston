@@ -14,6 +14,7 @@ doc_events = {
     "Lead": {
         "after_insert": "kreston.events.lead.after_insert",
         "on_update": "kreston.events.lead.on_update",
+        "validate": "kreston.events.lead.validate",
     }
 }
 

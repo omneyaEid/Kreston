@@ -19,6 +19,7 @@ frappe.ui.form.on("Lead", {
     },
     after_save: function (frm) {
         decisionHandler(frm);
+        saveStatusHandler(frm);
     },
     custom_add1: function (frm) {
         createAuditDialog(frm, "Add Audit Service", "Audit Service");

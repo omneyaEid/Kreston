@@ -6,18 +6,19 @@ function updateStatusHandler(frm) {
         frm.set_value("custom_legal_company_name", frm.doc.custom_company_name_card || "");
         frm.refresh_field("custom_legal_company_name");
     }
+    if (["Win","Lost Not Fit"].includes(frm.doc.custom_pipeline_status)) {
+        frm.set_df_property("custom_followup_date", "hidden", 1);
+    }
+}
+
+function saveStatusHandler(frm){
     if (["Win", "Lost Fit", "Lost Not Fit"].includes(frm.doc.custom_pipeline_status)) {
         const current_date = frappe.datetime.now_date(); // Get the current date
         frm.set_value("custom_closing_date", current_date); // Set the current date directly
         frm.refresh_field("custom_closing_date");
         frm.set_df_property("custom_closing_date", "read_only", 1);
     }
-
-    if (["Win","Lost Not Fit"].includes(frm.doc.custom_pipeline_status)) {
-        frm.set_df_property("custom_followup_date", "hidden", 1);
-    }
 }
-
 
 function decisionHandler(frm) {
     if (frm.doc.custom_decision === "Reject") {
