@@ -1,585 +1,1405 @@
 {
-    "actions": [],
-    "allow_events_in_timeline": 1,
-    "allow_import": 1,
-    "autoname": "naming_series:",
-    "creation": "2024-10-05 10:22:03.418779",
-    "default_view": "List",
-    "doctype": "DocType",
-    "document_type": "Document",
-    "email_append_to": 1,
-    "engine": "InnoDB",
-    "field_order": [
-        "naming_series",
-        "salutation",
-        "first_name",
-        "middle_name",
-        "last_name",
-        "column_break_1",
-        "lead_name",
-        "job_title",
-        "gender",
-        "source",
-        "col_break123",
-        "lead_owner",
-        "status",
-        "customer",
-        "type",
-        "request_type",
-        "contact_info_tab",
-        "email_id",
-        "website",
-        "column_break_20",
-        "mobile_no",
-        "whatsapp_no",
-        "column_break_16",
-        "phone",
-        "phone_ext",
-        "organization_section",
-        "company_name",
-        "no_of_employees",
-        "column_break_28",
-        "annual_revenue",
-        "industry",
-        "market_segment",
-        "column_break_31",
-        "territory",
-        "fax",
-        "address_section",
-        "address_html",
-        "column_break_38",
-        "city",
-        "state",
-        "country",
-        "column_break2",
-        "contact_html",
-        "qualification_tab",
-        "qualification_status",
-        "column_break_64",
-        "qualified_by",
-        "qualified_on",
-        "other_info_tab",
-        "campaign_name",
-        "company",
-        "column_break_22",
-        "language",
-        "image",
-        "title",
-        "column_break_50",
-        "disabled",
-        "unsubscribed",
-        "blog_subscriber",
-        "activities_tab",
-        "open_activities_html",
-        "all_activities_section",
-        "all_activities_html",
-        "notes_tab",
-        "notes_html",
-        "notes",
-        "dashboard_tab"
-    ],
-    "fields": [
-        {
-            "fieldname": "naming_series",
-            "fieldtype": "Select",
-            "label": "Series",
-            "no_copy": 1,
-            "oldfieldname": "naming_series",
-            "oldfieldtype": "Select",
-            "options": "CRM-LEAD-.YYYY.-",
-            "set_only_once": 1
-        },
-        {
-            "fieldname": "salutation",
-            "fieldtype": "Link",
-            "label": "Salutation",
-            "options": "Salutation"
-        },
-        {
-            "fieldname": "first_name",
-            "fieldtype": "Data",
-            "label": "First Name",
-            "mandatory_depends_on": "eval: !(doc.company_name)"
-        },
-        {
-            "fieldname": "middle_name",
-            "fieldtype": "Data",
-            "label": "Middle Name"
-        },
-        {
-            "fieldname": "last_name",
-            "fieldtype": "Data",
-            "label": "Last Name"
-        },
-        {
-            "fieldname": "column_break_1",
-            "fieldtype": "Column Break"
-        },
-        {
-            "depends_on": "eval:!doc.__islocal",
-            "fieldname": "lead_name",
-            "fieldtype": "Data",
-            "in_global_search": 1,
-            "label": "Full Name",
-            "oldfieldname": "lead_name",
-            "oldfieldtype": "Data",
-            "read_only": 1,
-            "search_index": 1
-        },
-        {
-            "fieldname": "job_title",
-            "fieldtype": "Data",
-            "in_list_view": 1,
-            "in_standard_filter": 1,
-            "label": "Job Title"
-        },
-        {
-            "fieldname": "gender",
-            "fieldtype": "Link",
-            "label": "Gender",
-            "options": "Gender"
-        },
-        {
-            "fieldname": "source",
-            "fieldtype": "Link",
-            "label": "Source",
-            "oldfieldname": "source",
-            "oldfieldtype": "Select",
-            "options": "Lead Source"
-        },
-        {
-            "fieldname": "col_break123",
-            "fieldtype": "Column Break",
-            "width": "50%"
-        },
-        {
-            "default": "__user",
-            "fieldname": "lead_owner",
-            "fieldtype": "Link",
-            "label": "Lead Owner",
-            "oldfieldname": "lead_owner",
-            "oldfieldtype": "Link",
-            "options": "User",
-            "search_index": 1
-        },
-        {
-            "default": "Lead",
-            "fieldname": "status",
-            "fieldtype": "Select",
-            "in_list_view": 1,
-            "in_standard_filter": 1,
-            "label": "Status",
-            "no_copy": 1,
-            "oldfieldname": "status",
-            "oldfieldtype": "Select",
-            "options": "Lead\nOpen\nReplied\nOpportunity\nQuotation\nLost Quotation\nInterested\nConverted\nDo Not Contact",
-            "reqd": 1,
-            "search_index": 1
-        },
-        {
-            "depends_on": "eval:doc.source == 'Existing Customer'",
-            "fieldname": "customer",
-            "fieldtype": "Link",
-            "label": "From Customer",
-            "no_copy": 1,
-            "oldfieldname": "customer",
-            "oldfieldtype": "Link",
-            "options": "Customer"
-        },
-        {
-            "fieldname": "type",
-            "fieldtype": "Select",
-            "label": "Lead Type",
-            "oldfieldname": "type",
-            "oldfieldtype": "Select",
-            "options": "\nClient\nChannel Partner\nConsultant"
-        },
-        {
-            "fieldname": "request_type",
-            "fieldtype": "Select",
-            "label": "Request Type",
-            "oldfieldname": "request_type",
-            "oldfieldtype": "Select",
-            "options": "\nProduct Enquiry\nRequest for Information\nSuggestions\nOther"
-        },
-        {
-            "fieldname": "contact_info_tab",
-            "fieldtype": "Section Break",
-            "label": "Contact Info"
-        },
-        {
-            "fieldname": "email_id",
-            "fieldtype": "Data",
-            "label": "Email",
-            "oldfieldname": "email_id",
-            "oldfieldtype": "Data",
-            "options": "Email",
-            "search_index": 1
-        },
-        {
-            "fieldname": "website",
-            "fieldtype": "Data",
-            "label": "Website",
-            "oldfieldname": "website",
-            "oldfieldtype": "Data"
-        },
-        {
-            "fieldname": "column_break_20",
-            "fieldtype": "Column Break"
-        },
-        {
-            "fieldname": "mobile_no",
-            "fieldtype": "Data",
-            "label": "Mobile No",
-            "oldfieldname": "mobile_no",
-            "oldfieldtype": "Data",
-            "options": "Phone"
-        },
-        {
-            "fieldname": "whatsapp_no",
-            "fieldtype": "Data",
-            "label": "WhatsApp",
-            "options": "Phone"
-        },
-        {
-            "fieldname": "column_break_16",
-            "fieldtype": "Column Break"
-        },
-        {
-            "fieldname": "phone",
-            "fieldtype": "Data",
-            "label": "Phone",
-            "oldfieldname": "contact_no",
-            "oldfieldtype": "Data",
-            "options": "Phone"
-        },
-        {
-            "fieldname": "phone_ext",
-            "fieldtype": "Data",
-            "label": "Phone Ext."
-        },
-        {
-            "fieldname": "organization_section",
-            "fieldtype": "Section Break",
-            "label": "Organization"
-        },
-        {
-            "fieldname": "company_name",
-            "fieldtype": "Data",
-            "in_list_view": 1,
-            "in_standard_filter": 1,
-            "label": "Organization Name",
-            "mandatory_depends_on": "eval: !(doc.first_name)",
-            "oldfieldname": "company_name",
-            "oldfieldtype": "Data"
-        },
-        {
-            "fieldname": "no_of_employees",
-            "fieldtype": "Select",
-            "label": "No of Employees",
-            "options": "1-10\n11-50\n51-200\n201-500\n501-1000\n1000+"
-        },
-        {
-            "fieldname": "column_break_28",
-            "fieldtype": "Column Break"
-        },
-        {
-            "fieldname": "annual_revenue",
-            "fieldtype": "Currency",
-            "label": "Annual Revenue"
-        },
-        {
-            "fieldname": "industry",
-            "fieldtype": "Link",
-            "label": "Industry",
-            "oldfieldname": "industry",
-            "oldfieldtype": "Link",
-            "options": "Industry Type"
-        },
-        {
-            "fieldname": "market_segment",
-            "fieldtype": "Link",
-            "label": "Market Segment",
-            "oldfieldname": "market_segment",
-            "oldfieldtype": "Select",
-            "options": "Market Segment"
-        },
-        {
-            "fieldname": "column_break_31",
-            "fieldtype": "Column Break"
-        },
-        {
-            "fieldname": "territory",
-            "fieldtype": "Link",
-            "in_list_view": 1,
-            "in_standard_filter": 1,
-            "label": "Territory",
-            "oldfieldname": "territory",
-            "oldfieldtype": "Link",
-            "options": "Territory",
-            "print_hide": 1
-        },
-        {
-            "fieldname": "fax",
-            "fieldtype": "Data",
-            "label": "Fax",
-            "oldfieldname": "fax",
-            "oldfieldtype": "Data"
-        },
-        {
-            "collapsible": 1,
-            "fieldname": "address_section",
-            "fieldtype": "Section Break",
-            "label": "Address & Contacts"
-        },
-        {
-            "fieldname": "address_html",
-            "fieldtype": "HTML",
-            "label": "Address HTML",
-            "read_only": 1
-        },
-        {
-            "fieldname": "column_break_38",
-            "fieldtype": "Column Break"
-        },
-        {
-            "fieldname": "city",
-            "fieldtype": "Data",
-            "label": "City"
-        },
-        {
-            "fieldname": "state",
-            "fieldtype": "Data",
-            "label": "State"
-        },
-        {
-            "fieldname": "country",
-            "fieldtype": "Link",
-            "label": "Country",
-            "options": "Country"
-        },
-        {
-            "fieldname": "column_break2",
-            "fieldtype": "Column Break"
-        },
-        {
-            "fieldname": "contact_html",
-            "fieldtype": "HTML",
-            "label": "Contact HTML",
-            "read_only": 1
-        },
-        {
-            "collapsible": 1,
-            "fieldname": "qualification_tab",
-            "fieldtype": "Section Break",
-            "label": "Qualification"
-        },
-        {
-            "fieldname": "qualification_status",
-            "fieldtype": "Select",
-            "label": "Qualification Status",
-            "options": "Unqualified\nIn Process\nQualified"
-        },
-        {
-            "fieldname": "column_break_64",
-            "fieldtype": "Column Break"
-        },
-        {
-            "fieldname": "qualified_by",
-            "fieldtype": "Link",
-            "label": "Qualified By",
-            "options": "User"
-        },
-        {
-            "fieldname": "qualified_on",
-            "fieldtype": "Date",
-            "label": "Qualified on"
-        },
-        {
-            "collapsible": 1,
-            "fieldname": "other_info_tab",
-            "fieldtype": "Section Break",
-            "label": "Additional Information"
-        },
-        {
-            "fieldname": "campaign_name",
-            "fieldtype": "Link",
-            "label": "Campaign Name",
-            "oldfieldname": "campaign_name",
-            "oldfieldtype": "Link",
-            "options": "Campaign"
-        },
-        {
-            "fieldname": "company",
-            "fieldtype": "Link",
-            "label": "Company",
-            "oldfieldname": "company",
-            "oldfieldtype": "Link",
-            "options": "Company",
-            "remember_last_selected_value": 1
-        },
-        {
-            "fieldname": "column_break_22",
-            "fieldtype": "Column Break"
-        },
-        {
-            "fieldname": "language",
-            "fieldtype": "Link",
-            "label": "Print Language",
-            "options": "Language"
-        },
-        {
-            "fieldname": "image",
-            "fieldtype": "Attach Image",
-            "hidden": 1,
-            "label": "Image",
-            "print_hide": 1
-        },
-        {
-            "fieldname": "title",
-            "fieldtype": "Data",
-            "hidden": 1,
-            "label": "Title",
-            "print_hide": 1
-        },
-        {
-            "fieldname": "column_break_50",
-            "fieldtype": "Column Break"
-        },
-        {
-            "default": "0",
-            "fieldname": "disabled",
-            "fieldtype": "Check",
-            "label": "Disabled"
-        },
-        {
-            "default": "0",
-            "fieldname": "unsubscribed",
-            "fieldtype": "Check",
-            "label": "Unsubscribed"
-        },
-        {
-            "default": "0",
-            "fieldname": "blog_subscriber",
-            "fieldtype": "Check",
-            "label": "Blog Subscriber"
-        },
-        {
-            "depends_on": "eval:!doc.__islocal",
-            "fieldname": "activities_tab",
-            "fieldtype": "Tab Break",
-            "label": "Activities"
-        },
-        {
-            "fieldname": "open_activities_html",
-            "fieldtype": "HTML",
-            "label": "Open Activities HTML"
-        },
-        {
-            "fieldname": "all_activities_section",
-            "fieldtype": "Section Break",
-            "label": "All Activities"
-        },
-        {
-            "fieldname": "all_activities_html",
-            "fieldtype": "HTML",
-            "label": "All Activities HTML"
-        },
-        {
-            "depends_on": "eval:!doc.__islocal",
-            "fieldname": "notes_tab",
-            "fieldtype": "Tab Break",
-            "label": "Comments"
-        },
-        {
-            "fieldname": "notes_html",
-            "fieldtype": "HTML",
-            "label": "Notes HTML"
-        },
-        {
-            "fieldname": "notes",
-            "fieldtype": "Table",
-            "hidden": 1,
-            "label": "Notes",
-            "no_copy": 1,
-            "options": "CRM Note"
-        },
-        {
-            "fieldname": "dashboard_tab",
-            "fieldtype": "Tab Break",
-            "label": "Connections",
-            "show_dashboard": 1
-        }
-    ],
-    "icon": "fa fa-user",
-    "image_field": "image",
-    "links": [],
-    "modified": "2024-10-05 10:22:03.418779",
-    "modified_by": "Administrator",
-    "module": "Kreston",
-    "name": "Grey Area",
-    "name_case": "Title Case",
-    "naming_rule": "By \"Naming Series\" field",
-    "owner": "Administrator",
-    "permissions": [
-        {
-            "permlevel": 1,
-            "read": 1,
-            "report": 1,
-            "role": "All"
-        },
-        {
-            "create": 1,
-            "email": 1,
-            "print": 1,
-            "read": 1,
-            "report": 1,
-            "role": "Sales User",
-            "share": 1,
-            "write": 1
-        },
-        {
-            "create": 1,
-            "delete": 1,
-            "email": 1,
-            "export": 1,
-            "import": 1,
-            "print": 1,
-            "read": 1,
-            "report": 1,
-            "role": "Sales Manager",
-            "share": 1,
-            "write": 1
-        },
-        {
-            "create": 1,
-            "email": 1,
-            "print": 1,
-            "read": 1,
-            "report": 1,
-            "role": "System Manager",
-            "share": 1,
-            "write": 1
-        },
-        {
-            "permlevel": 1,
-            "read": 1,
-            "report": 1,
-            "role": "Sales Manager"
-        },
-        {
-            "permlevel": 1,
-            "read": 1,
-            "report": 1,
-            "role": "Sales User"
-        }
-    ],
-    "search_fields": "lead_name,lead_owner,status",
-    "sender_field": "email_id",
-    "show_name_in_global_search": 1,
-    "sort_field": "modified",
-    "sort_order": "DESC",
-    "states": [],
-    "subject_field": "title",
-    "title_field": "title"
+ "actions": [],
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-10-05 10:22:03.418779",
+ "default_view": "List",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "email_append_to": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "salutation",
+  "first_name",
+  "middle_name",
+  "last_name",
+  "column_break_1",
+  "lead_name",
+  "job_title",
+  "gender",
+  "source",
+  "col_break123",
+  "lead_owner",
+  "status",
+  "customer",
+  "type",
+  "request_type",
+  "contact_info_tab",
+  "email_id",
+  "website",
+  "column_break_20",
+  "mobile_no",
+  "whatsapp_no",
+  "column_break_16",
+  "phone",
+  "phone_ext",
+  "organization_section",
+  "custom_column_break_q2f3y",
+  "company_name",
+  "no_of_employees",
+  "column_break_28",
+  "annual_revenue",
+  "industry",
+  "market_segment",
+  "column_break_31",
+  "territory",
+  "fax",
+  "address_section",
+  "address_html",
+  "column_break_38",
+  "city",
+  "state",
+  "country",
+  "column_break2",
+  "contact_html",
+  "custom_location",
+  "qualification_tab",
+  "qualification_status",
+  "custom_lead_type",
+  "custom_name",
+  "column_break_64",
+  "qualified_by",
+  "qualified_on",
+  "other_info_tab",
+  "campaign_name",
+  "company",
+  "custom_archive",
+  "custom_grey_area",
+  "column_break_22",
+  "language",
+  "image",
+  "title",
+  "column_break_50",
+  "disabled",
+  "unsubscribed",
+  "blog_subscriber",
+  "activities_tab",
+  "open_activities_html",
+  "all_activities_section",
+  "all_activities_html",
+  "notes_tab",
+  "notes_html",
+  "notes",
+  "dashboard_tab",
+  "custom_prospect",
+  "custom_business_card",
+  "custom_company_name_card",
+  "custom_country_card",
+  "custom_city_card",
+  "custom_card",
+  "custom_column_break_lf0ye",
+  "custom_client_name",
+  "custom_job_position",
+  "custom_business_location",
+  "custom_hunting",
+  "custom_hunting_type",
+  "custom_column_break_5zozd",
+  "custom_initial2",
+  "custom_info",
+  "custom_name_of_the_person",
+  "custom_member_name",
+  "custom_referral_number",
+  "custom_general_information",
+  "custom_entity",
+  "custom_group",
+  "custom_column_break_le6sw",
+  "custom_likelihood_winning_the_job",
+  "custom_group_name",
+  "custom_column_break_s4z2x",
+  "custom_profile_language",
+  "custom_group_companies_number",
+  "custom_onsite_visits",
+  "custom__onsite_visits",
+  "custom_visit_team_members",
+  "custom_opkokfgfdgproposal",
+  "custom_f_s_l",
+  "custom_ifrs",
+  "custom_column_break_s0pgt",
+  "custom_company_type",
+  "custom_institution_nationality",
+  "custom_specify_nationality",
+  "custom_acceptance_decision",
+  "custom_acceptance",
+  "custom_column_break_wffmq",
+  "custom_acceptance_letter",
+  "custom_column_break_wppxc",
+  "custom_comments",
+  "custom_column_break_1tzzm",
+  "custom_decision",
+  "custom_services_budget",
+  "custom_audit",
+  "custom_add1",
+  "custom_to_be_consider_in_quaem",
+  "custom_audit_sp",
+  "custom_audit_sp_type",
+  "custom_add2",
+  "custom_z_cases",
+  "custom_add3",
+  "custom_zdp_sp",
+  "custom_add4",
+  "custom_column_break_bo41i",
+  "custom_vat",
+  "custom_add5",
+  "custom_vat_cases",
+  "custom_add6",
+  "custom_aup",
+  "custom_add7",
+  "custom_lc",
+  "custom_add8",
+  "custom_column_break_ygnvq",
+  "custom_zakat",
+  "custom_add9",
+  "custom_tax",
+  "custom_add10",
+  "custom_som",
+  "custom_add11",
+  "custom_vdp_sp",
+  "custom_add12",
+  "custom_engagement_letter",
+  "custom_note",
+  "custom_section_break_dhgiu",
+  "custom_physical_year2",
+  "custom_column_break_mdxra",
+  "custom_f_s_types",
+  "custom_win",
+  "custom_win_status",
+  "section_break_cibw",
+  "custom_legal_company_name",
+  "custom_english_company_name",
+  "custom_column_break_foqr0",
+  "custom_commercial_registry_number",
+  "custom_client_number",
+  "custom_column_break_cs2jn",
+  "custom_commercial_registry",
+  "custom_other_attachments",
+  "custom_section_break_g8aoi",
+  "custom_customer_activities",
+  "custom_lost_fit",
+  "custom_reason",
+  "custom_column_break_u5oxx",
+  "custom_next_season_followup_date",
+  "custom_column_break_s9ftq",
+  "custom_last_status_before_closing",
+  "custom_section_break_bobdx",
+  "custom_lostfit_comments",
+  "custom_lost_not_fit",
+  "custom_lost_not_fit_reason",
+  "custom_column_break_3zqhe",
+  "custom_lost_not_fit__last_status_before_closing",
+  "custom_section_break_nu3hw",
+  "custom_lostnotfit_comments",
+  "custom_general",
+  "custom_pipeline_status",
+  "custom_last_status",
+  "custom_section_break_gv0qd",
+  "custom_opening_date",
+  "custom_column_break_lninh",
+  "custom_followup_date",
+  "custom_column_break_p0bfc",
+  "custom_closing_date",
+  "custom_totals",
+  "custom_column_break_13wb1",
+  "custom_total_services_budget",
+  "custom_total_services_expenses",
+  "custom_total_write_updown",
+  "custom_net_total_budget"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "oldfieldname": "naming_series",
+   "oldfieldtype": "Select",
+   "options": "CRM-LEAD-.YYYY.-",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "salutation",
+   "fieldtype": "Link",
+   "label": "Salutation",
+   "options": "Salutation"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name",
+   "mandatory_depends_on": "eval: !(doc.company_name)"
+  },
+  {
+   "fieldname": "middle_name",
+   "fieldtype": "Data",
+   "label": "Middle Name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "lead_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "Full Name",
+   "oldfieldname": "lead_name",
+   "oldfieldtype": "Data",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Job Title"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "label": "Gender",
+   "options": "Gender"
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Link",
+   "label": "Source",
+   "oldfieldname": "source",
+   "oldfieldtype": "Select",
+   "options": "Lead Source"
+  },
+  {
+   "fieldname": "col_break123",
+   "fieldtype": "Column Break",
+   "width": "50%"
+  },
+  {
+   "default": "__user",
+   "fieldname": "lead_owner",
+   "fieldtype": "Link",
+   "label": "Lead Owner",
+   "oldfieldname": "lead_owner",
+   "oldfieldtype": "Link",
+   "options": "User",
+   "search_index": 1
+  },
+  {
+   "default": "Lead",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "no_copy": 1,
+   "oldfieldname": "status",
+   "oldfieldtype": "Select",
+   "options": "Lead\nOpen\nReplied\nOpportunity\nQuotation\nLost Quotation\nInterested\nConverted\nDo Not Contact",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "depends_on": "eval:doc.source == 'Existing Customer'",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "From Customer",
+   "no_copy": 1,
+   "oldfieldname": "customer",
+   "oldfieldtype": "Link",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Lead Type",
+   "oldfieldname": "type",
+   "oldfieldtype": "Select",
+   "options": "\nClient\nChannel Partner\nConsultant"
+  },
+  {
+   "fieldname": "request_type",
+   "fieldtype": "Select",
+   "label": "Request Type",
+   "oldfieldname": "request_type",
+   "oldfieldtype": "Select",
+   "options": "\nProduct Enquiry\nRequest for Information\nSuggestions\nOther"
+  },
+  {
+   "fieldname": "contact_info_tab",
+   "fieldtype": "Section Break",
+   "label": "Contact Info"
+  },
+  {
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "label": "Email",
+   "oldfieldname": "email_id",
+   "oldfieldtype": "Data",
+   "options": "Email",
+   "search_index": 1
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "oldfieldname": "website",
+   "oldfieldtype": "Data"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "label": "Mobile No",
+   "oldfieldname": "mobile_no",
+   "oldfieldtype": "Data",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "whatsapp_no",
+   "fieldtype": "Data",
+   "label": "WhatsApp",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "oldfieldname": "contact_no",
+   "oldfieldtype": "Data",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "phone_ext",
+   "fieldtype": "Data",
+   "label": "Phone Ext."
+  },
+  {
+   "fieldname": "organization_section",
+   "fieldtype": "Section Break",
+   "label": "Organization"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Organization Name",
+   "mandatory_depends_on": "eval: !(doc.first_name)",
+   "oldfieldname": "company_name",
+   "oldfieldtype": "Data"
+  },
+  {
+   "fieldname": "no_of_employees",
+   "fieldtype": "Select",
+   "label": "No of Employees",
+   "options": "1-10\n11-50\n51-200\n201-500\n501-1000\n1000+"
+  },
+  {
+   "fieldname": "column_break_28",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "annual_revenue",
+   "fieldtype": "Currency",
+   "label": "Annual Revenue"
+  },
+  {
+   "fieldname": "industry",
+   "fieldtype": "Link",
+   "label": "Industry",
+   "oldfieldname": "industry",
+   "oldfieldtype": "Link",
+   "options": "Industry Type"
+  },
+  {
+   "fieldname": "market_segment",
+   "fieldtype": "Link",
+   "label": "Market Segment",
+   "oldfieldname": "market_segment",
+   "oldfieldtype": "Select",
+   "options": "Market Segment"
+  },
+  {
+   "fieldname": "column_break_31",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "territory",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Territory",
+   "oldfieldname": "territory",
+   "oldfieldtype": "Link",
+   "options": "Territory",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "fax",
+   "fieldtype": "Data",
+   "label": "Fax",
+   "oldfieldname": "fax",
+   "oldfieldtype": "Data"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address & Contacts"
+  },
+  {
+   "fieldname": "address_html",
+   "fieldtype": "HTML",
+   "label": "Address HTML",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_38",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "column_break2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact_html",
+   "fieldtype": "HTML",
+   "label": "Contact HTML",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "qualification_tab",
+   "fieldtype": "Section Break",
+   "label": "Qualification"
+  },
+  {
+   "fieldname": "qualification_status",
+   "fieldtype": "Select",
+   "label": "Qualification Status",
+   "options": "Unqualified\nIn Process\nQualified"
+  },
+  {
+   "fieldname": "column_break_64",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "qualified_by",
+   "fieldtype": "Link",
+   "label": "Qualified By",
+   "options": "User"
+  },
+  {
+   "fieldname": "qualified_on",
+   "fieldtype": "Date",
+   "label": "Qualified on"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "other_info_tab",
+   "fieldtype": "Section Break",
+   "label": "Additional Information"
+  },
+  {
+   "fieldname": "campaign_name",
+   "fieldtype": "Link",
+   "label": "Campaign Name",
+   "oldfieldname": "campaign_name",
+   "oldfieldtype": "Link",
+   "options": "Campaign"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "oldfieldname": "company",
+   "oldfieldtype": "Link",
+   "options": "Company",
+   "remember_last_selected_value": 1
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "language",
+   "fieldtype": "Link",
+   "label": "Print Language",
+   "options": "Language"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Image",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Title",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "column_break_50",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "default": "0",
+   "fieldname": "unsubscribed",
+   "fieldtype": "Check",
+   "label": "Unsubscribed"
+  },
+  {
+   "default": "0",
+   "fieldname": "blog_subscriber",
+   "fieldtype": "Check",
+   "label": "Blog Subscriber"
+  },
+  {
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "activities_tab",
+   "fieldtype": "Tab Break",
+   "label": "Activities"
+  },
+  {
+   "fieldname": "open_activities_html",
+   "fieldtype": "HTML",
+   "label": "Open Activities HTML"
+  },
+  {
+   "fieldname": "all_activities_section",
+   "fieldtype": "Section Break",
+   "label": "All Activities"
+  },
+  {
+   "fieldname": "all_activities_html",
+   "fieldtype": "HTML",
+   "label": "All Activities HTML"
+  },
+  {
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "notes_tab",
+   "fieldtype": "Tab Break",
+   "label": "Comments"
+  },
+  {
+   "fieldname": "notes_html",
+   "fieldtype": "HTML",
+   "label": "Notes HTML"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "label": "Notes",
+   "no_copy": 1,
+   "options": "CRM Note"
+  },
+  {
+   "fieldname": "dashboard_tab",
+   "fieldtype": "Tab Break",
+   "label": "Connections",
+   "show_dashboard": 1
+  },
+  {
+   "fieldname": "custom_prospect",
+   "fieldtype": "Tab Break",
+   "label": "Propspect"
+  },
+  {
+   "fieldname": "custom_business_card",
+   "fieldtype": "Section Break",
+   "label": "Business Card"
+  },
+  {
+   "fieldname": "custom_company_name_card",
+   "fieldtype": "Data",
+   "label": "Company Name Card"
+  },
+  {
+   "fieldname": "custom_country_card",
+   "fieldtype": "Data",
+   "label": "Country"
+  },
+  {
+   "fieldname": "custom_city_card",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "custom_card",
+   "fieldtype": "Attach",
+   "label": "Business Card"
+  },
+  {
+   "fieldname": "custom_client_name",
+   "fieldtype": "Data",
+   "label": "Client Name"
+  },
+  {
+   "fieldname": "custom_job_position",
+   "fieldtype": "Data",
+   "label": "Job Position"
+  },
+  {
+   "fieldname": "custom_business_location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "custom_hunting",
+   "fieldtype": "Section Break",
+   "label": "Hunting"
+  },
+  {
+   "fieldname": "custom_hunting_type",
+   "fieldtype": "Select",
+   "label": "Hunting Type",
+   "options": "\nInitial\nInfo\nKreston Referral\nOutsource"
+  },
+  {
+   "depends_on": "eval:doc.custom_hunting_type == 'Initial';",
+   "fieldname": "custom_initial2",
+   "fieldtype": "Link",
+   "label": "Initial",
+   "mandatory_depends_on": "eval:doc.custom_hunting_type == 'Initial';",
+   "options": "Employee"
+  },
+  {
+   "depends_on": "eval:doc.custom_hunting_type == 'Info';",
+   "fieldname": "custom_info",
+   "fieldtype": "Data",
+   "label": "Info",
+   "mandatory_depends_on": "eval:doc.custom_hunting_type == 'Info';"
+  },
+  {
+   "depends_on": "eval:doc.custom_hunting_type == 'Outsource';",
+   "fieldname": "custom_name_of_the_person",
+   "fieldtype": "Data",
+   "label": "Name of the Person",
+   "mandatory_depends_on": "eval:doc.custom_hunting_type == 'Outsource';"
+  },
+  {
+   "depends_on": "eval:doc.custom_hunting_type == 'Kreston Referral';",
+   "fieldname": "custom_member_name",
+   "fieldtype": "Data",
+   "label": "Member Name",
+   "mandatory_depends_on": "eval:doc.custom_hunting_type == 'Kreston Referral';"
+  },
+  {
+   "depends_on": "eval:doc.custom_hunting_type == 'Kreston Referral';",
+   "fieldname": "custom_referral_number",
+   "fieldtype": "Data",
+   "label": "Referral Number",
+   "mandatory_depends_on": "eval:doc.custom_hunting_type == 'Kreston Referral';"
+  },
+  {
+   "fieldname": "custom_general_information",
+   "fieldtype": "Section Break",
+   "label": "General Information"
+  },
+  {
+   "fieldname": "custom_entity",
+   "fieldtype": "Select",
+   "label": "Entity",
+   "options": "\nSmall\nMedium\nLarge"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_group",
+   "fieldtype": "Check",
+   "label": "Group"
+  },
+  {
+   "fieldname": "custom_onsite_visits",
+   "fieldtype": "Section Break",
+   "label": "Onsite Visits"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom__onsite_visits",
+   "fieldtype": "Check",
+   "label": "Onsite Visits?"
+  },
+  {
+   "depends_on": "eval:doc.custom__onsite_visits == 1;",
+   "fieldname": "custom_visit_team_members",
+   "fieldtype": "Table",
+   "label": "Visit Team Members",
+   "options": "Visit Team Table"
+  },
+  {
+   "depends_on": "eval:doc.custom_pipeline_status == 'Proposal'||doc.custom_pipeline_status == 'Engagement Letter'||doc.custom_pipeline_status == 'Win'||doc.custom_pipeline_status == 'Lost Fit'||doc.custom_pipeline_status == 'Lost Not Fit';",
+   "fieldname": "custom_opkokfgfdgproposal",
+   "fieldtype": "Tab Break",
+   "label": "Proposal"
+  },
+  {
+   "fieldname": "custom_likelihood_winning_the_job",
+   "fieldtype": "Select",
+   "label": "Likelihood Winning the Job",
+   "options": "\nLow\nMedium\nHigh"
+  },
+  {
+   "fieldname": "custom_group_name",
+   "fieldtype": "Data",
+   "label": "Group Name"
+  },
+  {
+   "fieldname": "custom_profile_language",
+   "fieldtype": "Select",
+   "label": "Profile Language",
+   "options": "\nArabic Only\nArabic & English"
+  },
+  {
+   "fieldname": "custom_group_companies_number",
+   "fieldtype": "Data",
+   "label": "Group Companies Number"
+  },
+  {
+   "fieldname": "custom_f_s_l",
+   "fieldtype": "Select",
+   "label": "Financial Statements Language",
+   "options": "\nArabic Only\nArabic & English"
+  },
+  {
+   "fieldname": "custom_ifrs",
+   "fieldtype": "Data",
+   "label": "IFRS"
+  },
+  {
+   "fieldname": "custom_company_type",
+   "fieldtype": "Select",
+   "label": "Company Type",
+   "options": "\nEst\nL.T.D\nC.J.S.C\nJ.S.C\nJ.V"
+  },
+  {
+   "fieldname": "custom_institution_nationality",
+   "fieldtype": "Select",
+   "label": "Institution Nationality",
+   "options": "\nSaudi\nForeign\nMix\nG.C.C\nOther"
+  },
+  {
+   "fieldname": "custom_specify_nationality",
+   "fieldtype": "Data",
+   "label": "Specify Nationality"
+  },
+  {
+   "fieldname": "custom_acceptance_decision",
+   "fieldtype": "Section Break",
+   "label": "Acceptance Decision"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_acceptance",
+   "fieldtype": "Check",
+   "label": "Acceptance"
+  },
+  {
+   "depends_on": "eval:doc.custom_acceptance == 1;",
+   "fieldname": "custom_acceptance_letter",
+   "fieldtype": "Attach",
+   "label": "Acceptance Letter",
+   "mandatory_depends_on": "eval:doc.custom_acceptance == 1;"
+  },
+  {
+   "depends_on": "eval:doc.custom_acceptance == 1;",
+   "fieldname": "custom_comments",
+   "fieldtype": "Small Text",
+   "label": "Comments",
+   "mandatory_depends_on": "eval:doc.custom_acceptance == 1;"
+  },
+  {
+   "depends_on": "eval:doc.custom_acceptance == 1;",
+   "fieldname": "custom_decision",
+   "fieldtype": "Select",
+   "label": "Decision",
+   "mandatory_depends_on": "eval:doc.custom_acceptance == 1;",
+   "options": "\nAccept\nReject"
+  },
+  {
+   "depends_on": "eval:doc.custom_decision == 'Accept';",
+   "fieldname": "custom_services_budget",
+   "fieldtype": "Section Break",
+   "label": "Services Budget"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_audit",
+   "fieldtype": "Check",
+   "label": "Audit"
+  },
+  {
+   "depends_on": "eval:doc.custom_audit == 1;",
+   "fieldname": "custom_add1",
+   "fieldtype": "Button",
+   "label": "Add"
+  },
+  {
+   "depends_on": "eval:doc.custom_audit == 1;",
+   "fieldname": "custom_to_be_consider_in_quaem",
+   "fieldtype": "Heading",
+   "label": "To be consider in Quaem"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_audit_sp",
+   "fieldtype": "Check",
+   "label": "Audit SP",
+   "read_only_depends_on": "eval:doc.custom_audit == 1;"
+  },
+  {
+   "depends_on": "eval:doc.custom_audit_sp == 1;",
+   "fieldname": "custom_audit_sp_type",
+   "fieldtype": "Select",
+   "label": "Audit SP Type",
+   "mandatory_depends_on": "eval:doc.custom_audit_sp == 1;",
+   "options": "\nSP.M.P\nLegal Case\nSpecial Report\nOther"
+  },
+  {
+   "depends_on": "eval:doc.custom_audit_sp == 1;",
+   "fieldname": "custom_add2",
+   "fieldtype": "Button",
+   "label": "Add"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_z_cases",
+   "fieldtype": "Check",
+   "label": "Z. Cases",
+   "read_only_depends_on": "eval:doc.custom_audit == 1;"
+  },
+  {
+   "depends_on": "eval:doc.custom_z_cases == 1;",
+   "fieldname": "custom_add3",
+   "fieldtype": "Button",
+   "label": "Add"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_zdp_sp",
+   "fieldtype": "Check",
+   "label": "ZDP SP",
+   "read_only_depends_on": "eval:doc.custom_audit == 1;"
+  },
+  {
+   "depends_on": "eval:doc.custom_zdp_sp == 1;",
+   "fieldname": "custom_add4",
+   "fieldtype": "Button",
+   "label": "Add"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_vat",
+   "fieldtype": "Check",
+   "label": "VAT"
+  },
+  {
+   "depends_on": "eval:doc.custom_vat == 1;",
+   "fieldname": "custom_add5",
+   "fieldtype": "Button",
+   "label": "Add"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_vat_cases",
+   "fieldtype": "Check",
+   "label": "VAT Cases",
+   "read_only_depends_on": "eval:doc.custom_audit == 1;"
+  },
+  {
+   "depends_on": "eval:doc.custom_vat_cases == 1;",
+   "fieldname": "custom_add6",
+   "fieldtype": "Button",
+   "label": "Add"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_aup",
+   "fieldtype": "Check",
+   "label": "AUP",
+   "read_only_depends_on": "eval:doc.custom_audit == 1;"
+  },
+  {
+   "depends_on": "eval:doc.custom_aup == 1;",
+   "fieldname": "custom_add7",
+   "fieldtype": "Button",
+   "label": "Add"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_lc",
+   "fieldtype": "Check",
+   "label": "LC"
+  },
+  {
+   "depends_on": "eval:doc.custom_lc == 1;",
+   "fieldname": "custom_add8",
+   "fieldtype": "Button",
+   "label": "Add"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_zakat",
+   "fieldtype": "Check",
+   "label": "Zakat"
+  },
+  {
+   "depends_on": "eval:doc.custom_zakat == 1;",
+   "fieldname": "custom_add9",
+   "fieldtype": "Button",
+   "label": "Add"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_tax",
+   "fieldtype": "Check",
+   "label": "Tax"
+  },
+  {
+   "depends_on": "eval:doc.custom_tax == 1;",
+   "fieldname": "custom_add10",
+   "fieldtype": "Button",
+   "label": "Add"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_som",
+   "fieldtype": "Check",
+   "label": "SOM",
+   "read_only_depends_on": "eval:doc.custom_audit == 1;"
+  },
+  {
+   "depends_on": "eval:doc.custom_som == 1;",
+   "fieldname": "custom_add11",
+   "fieldtype": "Button",
+   "label": "Add"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_vdp_sp",
+   "fieldtype": "Check",
+   "label": "VDP. SP",
+   "read_only_depends_on": "eval:doc.custom_audit == 1;"
+  },
+  {
+   "depends_on": "eval:doc.custom_vdp_sp == 1;",
+   "fieldname": "custom_add12",
+   "fieldtype": "Button",
+   "label": "Add"
+  },
+  {
+   "depends_on": "eval:doc.custom_pipeline_status == 'Engagement Letter'||doc.custom_pipeline_status == 'Win'||doc.custom_pipeline_status == 'Lost Fit'||doc.custom_pipeline_status == 'Lost Not Fit';",
+   "fieldname": "custom_engagement_letter",
+   "fieldtype": "Tab Break",
+   "label": "Engagement Letter"
+  },
+  {
+   "fieldname": "custom_note",
+   "fieldtype": "Small Text",
+   "label": "Note"
+  },
+  {
+   "fieldname": "custom_section_break_dhgiu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "custom_physical_year2",
+   "fieldtype": "Date",
+   "label": "Physical Year"
+  },
+  {
+   "fieldname": "custom_f_s_types",
+   "fieldtype": "Date",
+   "label": "F. S. Types"
+  },
+  {
+   "depends_on": "eval:doc.custom_pipeline_status == 'Win';",
+   "fieldname": "custom_win",
+   "fieldtype": "Tab Break",
+   "label": "Win"
+  },
+  {
+   "fieldname": "custom_legal_company_name",
+   "fieldtype": "Data",
+   "label": "Arabic Company Name"
+  },
+  {
+   "fieldname": "custom_english_company_name",
+   "fieldtype": "Date",
+   "label": "English Company Name"
+  },
+  {
+   "fieldname": "custom_commercial_registry_number",
+   "fieldtype": "Data",
+   "label": "Commercial Registry Number"
+  },
+  {
+   "fieldname": "custom_client_number",
+   "fieldtype": "Data",
+   "label": "Client Number"
+  },
+  {
+   "fieldname": "custom_commercial_registry",
+   "fieldtype": "Attach",
+   "label": "Commercial Registry"
+  },
+  {
+   "fieldname": "custom_other_attachments",
+   "fieldtype": "Attach",
+   "label": "Other Attachments"
+  },
+  {
+   "fieldname": "custom_section_break_g8aoi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "custom_customer_activities",
+   "fieldtype": "Text Editor",
+   "label": "Customer Activities"
+  },
+  {
+   "depends_on": "eval:doc.custom_pipeline_status == 'Lost Fit';",
+   "fieldname": "custom_lost_fit",
+   "fieldtype": "Tab Break",
+   "label": "Lost Fit"
+  },
+  {
+   "fieldname": "custom_reason",
+   "fieldtype": "Select",
+   "label": "Reason",
+   "options": "\nHigh Price\nLow Price\nCompetition\nManagement Decision\nOther"
+  },
+  {
+   "fieldname": "custom_next_season_followup_date",
+   "fieldtype": "Date",
+   "label": "Next Season Followup Date"
+  },
+  {
+   "fieldname": "custom_last_status_before_closing",
+   "fieldtype": "Data",
+   "label": "Last Status Before Closing"
+  },
+  {
+   "fieldname": "custom_section_break_bobdx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "custom_lostfit_comments",
+   "fieldtype": "Text",
+   "label": "Comments"
+  },
+  {
+   "depends_on": "eval:doc.custom_pipeline_status == 'Lost Not Fit';",
+   "fieldname": "custom_lost_not_fit",
+   "fieldtype": "Tab Break",
+   "label": "Lost Not Fit"
+  },
+  {
+   "fieldname": "custom_lost_not_fit_reason",
+   "fieldtype": "Select",
+   "label": "Reason",
+   "options": "\nHigh Price\nLow Price\nCompetition\nManagement Decision\nOther"
+  },
+  {
+   "fieldname": "custom_lost_not_fit__last_status_before_closing",
+   "fieldtype": "Data",
+   "label": "Last Status Before Closing"
+  },
+  {
+   "fieldname": "custom_section_break_nu3hw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "custom_lostnotfit_comments",
+   "fieldtype": "Text",
+   "label": "Comments"
+  },
+  {
+   "fieldname": "custom_general",
+   "fieldtype": "Tab Break",
+   "label": "General"
+  },
+  {
+   "fieldname": "custom_pipeline_status",
+   "fieldtype": "Select",
+   "label": "Pipeline Status",
+   "options": "Prospect\nProposal\nEngagement Letter\nWin\nLost Fit\nLost Not Fit"
+  },
+  {
+   "fieldname": "custom_last_status",
+   "fieldtype": "Data",
+   "label": "Last Status"
+  },
+  {
+   "fieldname": "custom_section_break_gv0qd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "custom_opening_date",
+   "fieldtype": "Date",
+   "label": "Opening Date"
+  },
+  {
+   "fieldname": "custom_followup_date",
+   "fieldtype": "Date",
+   "label": "Followup Date"
+  },
+  {
+   "fieldname": "custom_closing_date",
+   "fieldtype": "Date",
+   "label": "Closing Date"
+  },
+  {
+   "fieldname": "custom_totals",
+   "fieldtype": "Section Break",
+   "label": "Totals"
+  },
+  {
+   "fieldname": "custom_total_services_budget",
+   "fieldtype": "Float",
+   "label": "Total Services Budget"
+  },
+  {
+   "fieldname": "custom_total_services_expenses",
+   "fieldtype": "Float",
+   "label": "Total Services Expenses"
+  },
+  {
+   "fieldname": "custom_total_write_updown",
+   "fieldtype": "Float",
+   "label": "Total Write Up/Down"
+  },
+  {
+   "fieldname": "custom_net_total_budget",
+   "fieldtype": "Float",
+   "label": "Net Total Budget"
+  },
+  {
+   "fieldname": "custom_column_break_q2f3y",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_location",
+   "fieldtype": "Geolocation",
+   "label": "Location"
+  },
+  {
+   "fieldname": "custom_lead_type",
+   "fieldtype": "Select",
+   "label": "Contact Type",
+   "options": "Friend\nSupplier\nOutsource"
+  },
+  {
+   "fieldname": "custom_name",
+   "fieldtype": "Small Text",
+   "label": "Name"
+  },
+  {
+   "default": "0",
+   "fieldname": "custom_archive",
+   "fieldtype": "Check",
+   "label": "Archive"
+  },
+  {
+   "fieldname": "custom_grey_area",
+   "fieldtype": "Link",
+   "label": "Grey Area",
+   "options": "Grey Area"
+  },
+  {
+   "fieldname": "custom_column_break_lf0ye",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_5zozd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_le6sw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_s4z2x",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_s0pgt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_wffmq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_wppxc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_1tzzm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_bo41i",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_ygnvq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_mdxra",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_foqr0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_cs2jn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_u5oxx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_s9ftq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_3zqhe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_lninh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_p0bfc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "custom_column_break_13wb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_cibw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "custom_win_status",
+   "fieldtype": "Select",
+   "label": "Win Status",
+   "options": "Complete\nIn-Complete",
+   "reqd": 1
+  }
+ ],
+ "icon": "fa fa-user",
+ "image_field": "image",
+ "links": [],
+ "modified": "2024-10-19 12:08:50.333751",
+ "modified_by": "Administrator",
+ "module": "Kreston",
+ "name": "Grey Area",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "permlevel": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All"
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager"
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User"
+  }
+ ],
+ "search_fields": "lead_name,lead_owner,status",
+ "sender_field": "email_id",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "subject_field": "title",
+ "title_field": "title"
 }
