@@ -11,7 +11,6 @@
   "column_break_fbhx",
   "linked_service",
   "section_break_zhzp",
-  "audit_group_leader",
   "audit_budget_table",
   "total_audit_budget",
   "audit_write_up_down",
@@ -30,12 +29,6 @@
   "total_audit_expenses"
  ],
  "fields": [
-  {
-   "fieldname": "audit_group_leader",
-   "fieldtype": "Link",
-   "label": "VAT Cases Group Leader",
-   "options": "Employee"
-  },
   {
    "fieldname": "audit_budget_table",
    "fieldtype": "Table",
@@ -143,7 +136,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-05 14:26:48.608755",
+ "modified": "2024-10-29 22:36:16.137449",
  "modified_by": "Administrator",
  "module": "Kreston",
  "name": "VAT Cases Service",

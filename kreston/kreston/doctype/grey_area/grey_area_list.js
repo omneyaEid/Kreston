@@ -4,6 +4,10 @@ frappe.listview_settings['Grey Area'] = {
         listview.page.add_action_item(__("Move To Pipline Content"), function () {
             moveToLead(listview);
         });
+
+        listview.filter_area.add([
+            ["Grey Area", "custom_archive", "=", "0"]
+        ]);
     }
 }
 

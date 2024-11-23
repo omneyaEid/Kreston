@@ -1,6 +1,7 @@
 import frappe
+from frappe import throw, _
 import json
-from frappe.utils import getdate
+from frappe.utils import getdate, add_to_date
 
 services = [
         "Audit Service",
@@ -84,6 +85,8 @@ def move_to_grey_area(lead_names):
                 for fieldname in lead_fields:
                     if fieldname in grey_area_fields:  # Check if the field exists in the Grey Area doctype
                         grey_area_doc.set(fieldname, lead_doc.get(fieldname))
+                
+                grey_area_doc.lead = lead_name
 
                 # Insert the new Grey Area document
                 grey_area_doc.insert(ignore_permissions=True, ignore_mandatory=True)
@@ -111,9 +114,27 @@ def move_to_grey_area(lead_names):
                 lead_doc.custom_archive = 1
                 lead_doc.custom_grey_area = grey_area_doc.name
                 lead_doc.save(ignore_permissions=True)
+            else:
+                throw(_(f"{lead_name}: Pipeline status must be 'Win' or 'Lost Fit'"))
 
         return {"message": "Leads moved to Grey Area and services updated successfully."}
 
     except Exception as e:
         frappe.throw(str(e))
     
+
+def archive_leads():
+    leads = frappe.db.get_all(
+        "Lead",
+        filters={
+            "custom_pipeline_status": "Lost Not Fit",
+            "custom_archive": 0
+        },
+        fields=["name"]
+    )
+    if leads:
+        move_to_grey_area = frappe.db.get_single_value('Global Settings', 'move_to_grey_area')
+        if getdate() >= add_to_date(move_to_grey_area, days=1):
+            for lead in leads:
+                doc = frappe.get_doc("Lead", lead.name)
+                doc.db_set("custom_archive", 1, update_modified=False)

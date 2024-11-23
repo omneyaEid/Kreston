@@ -10,9 +10,9 @@
  "email_append_to": 1,
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "naming_series",
   "salutation",
-  "first_name",
   "middle_name",
   "last_name",
   "column_break_1",
@@ -67,6 +67,7 @@
   "company",
   "custom_archive",
   "custom_grey_area",
+  "lead",
   "column_break_22",
   "language",
   "image",
@@ -84,6 +85,7 @@
   "notes",
   "dashboard_tab",
   "custom_prospect",
+  "first_name",
   "custom_business_card",
   "custom_company_name_card",
   "custom_country_card",
@@ -193,6 +195,8 @@
   "custom_general",
   "custom_pipeline_status",
   "custom_last_status",
+  "column_break_hjza",
+  "new_pipeline_status",
   "custom_section_break_gv0qd",
   "custom_opening_date",
   "custom_column_break_lninh",
@@ -226,7 +230,7 @@
   {
    "fieldname": "first_name",
    "fieldtype": "Data",
-   "label": "First Name",
+   "label": "Lead Name",
    "mandatory_depends_on": "eval: !(doc.company_name)"
   },
   {
@@ -596,6 +600,7 @@
    "depends_on": "eval:!doc.__islocal",
    "fieldname": "activities_tab",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Activities"
   },
   {
@@ -617,6 +622,7 @@
    "depends_on": "eval:!doc.__islocal",
    "fieldname": "notes_tab",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Comments"
   },
   {
@@ -635,6 +641,7 @@
   {
    "fieldname": "dashboard_tab",
    "fieldtype": "Tab Break",
+   "hidden": 1,
    "label": "Connections",
    "show_dashboard": 1
   },
@@ -1047,8 +1054,9 @@
   },
   {
    "fieldname": "custom_f_s_types",
-   "fieldtype": "Date",
-   "label": "F. S. Types"
+   "fieldtype": "Select",
+   "label": "F. S. Types",
+   "options": "\nStand Alone\nConsolidation\nQuarter"
   },
   {
    "depends_on": "eval:doc.custom_pipeline_status == 'Win';",
@@ -1063,7 +1071,7 @@
   },
   {
    "fieldname": "custom_english_company_name",
-   "fieldtype": "Date",
+   "fieldtype": "Data",
    "label": "English Company Name"
   },
   {
@@ -1161,7 +1169,8 @@
    "fieldname": "custom_pipeline_status",
    "fieldtype": "Select",
    "label": "Pipeline Status",
-   "options": "Prospect\nProposal\nEngagement Letter\nWin\nLost Fit\nLost Not Fit"
+   "options": "Prospect\nProposal\nEngagement Letter\nWin\nLost Fit\nLost Not Fit",
+   "read_only_depends_on": "lead"
   },
   {
    "fieldname": "custom_last_status",
@@ -1241,6 +1250,7 @@
   {
    "fieldname": "custom_grey_area",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Grey Area",
    "options": "Grey Area"
   },
@@ -1328,14 +1338,38 @@
    "fieldname": "custom_win_status",
    "fieldtype": "Select",
    "label": "Win Status",
-   "options": "Complete\nIn-Complete",
-   "reqd": 1
+   "options": "\nComplete\nIn-Complete"
+  },
+  {
+   "fieldname": "lead",
+   "fieldtype": "Link",
+   "label": "Lead",
+   "no_copy": 1,
+   "options": "Lead",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_hjza",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.custom_win_status != \"In-Complete\"",
+   "fieldname": "new_pipeline_status",
+   "fieldtype": "Select",
+   "label": "New Pipeline Status",
+   "options": "\nProspect\nProposal\nLost Fit\nLost Not Fit"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "hidden": 1,
+   "label": "Details"
   }
  ],
  "icon": "fa fa-user",
  "image_field": "image",
  "links": [],
- "modified": "2024-10-19 12:08:50.333751",
+ "modified": "2024-10-30 21:42:42.915410",
  "modified_by": "Administrator",
  "module": "Kreston",
  "name": "Grey Area",

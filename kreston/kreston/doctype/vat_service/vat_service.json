@@ -11,7 +11,6 @@
   "column_break_lhyp",
   "linked_service",
   "section_break_psyg",
-  "audit_group_leader",
   "audit_budget_table",
   "total_audit_budget",
   "audit_write_up_down",
@@ -93,12 +92,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "audit_group_leader",
-   "fieldtype": "Link",
-   "label": "VAT Group Leader",
-   "options": "Employee"
-  },
-  {
    "fieldname": "audit_budget_table",
    "fieldtype": "Table",
    "label": "VAT Budget Table",
@@ -143,7 +136,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-05 14:24:37.972993",
+ "modified": "2024-10-29 22:36:25.795278",
  "modified_by": "Administrator",
  "module": "Kreston",
  "name": "VAT Service",

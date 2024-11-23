@@ -24,7 +24,7 @@ def on_update(doc, method=None):
         else:
             doc.custom_client_number = ""
     
-    if (status_updated or new_status) and doc.custom_pipeline_status in ["Lost Fit", "Lost Not Fit"]:
+    if status_updated and doc.custom_pipeline_status in ["Lost Fit", "Lost Not Fit"]:
         doc.custom_last_status = old_doc.custom_pipeline_status
 
 
@@ -60,10 +60,16 @@ def validate(doc, method=None):
             if not linked_services:
                 missing_services.append(service_type)
 
-    # If there are any missing services, throw a validation error listing all
-    if missing_services:
-        missing_list = ",".join(missing_services)
-        frappe.throw(f"The following required services are missing for {doc.name}:\n{missing_list}")
+    if not doc.is_new():
+        doc_before_save = frappe.get_doc(doc.doctype, doc.name, for_update=True)
+
+        # If there are any missing services, throw a validation error listing all
+        if doc_before_save.custom_pipeline_status == "Proposal" and(
+            doc_before_save.custom_pipeline_status != doc.custom_pipeline_status
+        ):
+            if missing_services:
+                missing_list = ",".join(missing_services)
+                frappe.throw(f"The following required services are missing for {doc.name}:\n{missing_list}")
 
 
 def get_last_sequance():

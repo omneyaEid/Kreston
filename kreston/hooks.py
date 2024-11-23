@@ -22,6 +22,12 @@ doctype_list_js = {
     "Lead": "public/js/lead_list.js"
 }
 
+scheduler_events = {
+	"daily": [
+		"kreston.methods.lead.archive_leads"
+	]
+}
+
 # Apps
 # ------------------
 
@@ -165,23 +171,6 @@ doctype_list_js = {
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"kreston.tasks.all"
-# 	],
-# 	"daily": [
-# 		"kreston.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"kreston.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"kreston.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"kreston.tasks.monthly"
-# 	],
-# }
 
 # Testing
 # -------
