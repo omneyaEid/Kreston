@@ -8,12 +8,17 @@ app_license = "mit"
 
 doctype_js = {"Lead": "public/js/lead.js"}
 
-override_doctype_dashboards = {"Lead": "kreston.dashboard.lead.get_data"}
+override_doctype_dashboards = {
+    "Lead": "kreston.dashboard.lead.get_data",
+}
 
 doc_events = {
     "Lead": {
         "after_insert": "kreston.events.lead.after_insert",
-        "on_update": "kreston.events.lead.on_update",
+        "on_update": [
+            "kreston.events.lead.on_update",
+            "kreston.kreston.doctype.pmo_client.pmo_client.move_from_lead_to_pmo_client"
+        ],
         "validate": "kreston.events.lead.validate",
     }
 }

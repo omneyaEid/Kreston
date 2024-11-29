@@ -1,161 +1,200 @@
 {
- "actions": [],
- "allow_rename": 1,
- "creation": "2024-10-05 00:32:58.137453",
- "default_view": "List",
- "doctype": "DocType",
- "editable_grid": 1,
- "engine": "InnoDB",
- "field_order": [
-  "linked_doctype",
-  "column_break_kerm",
-  "linked_service",
-  "section_break_fkxk",
-  "audit_budget_table",
-  "total_audit_budget",
-  "audit_write_up_down",
-  "audit_expenses_section",
-  "audit_per_diem",
-  "audit_per_diem_amount",
-  "column_break_oyuhp",
-  "audit_cat",
-  "audit_car_amount",
-  "column_break_ufaq0",
-  "audit_ticket",
-  "audit_ticket_amount",
-  "column_break_ffxja",
-  "audit_other",
-  "audit_other_amount",
-  "total_audit_expenses"
- ],
- "fields": [
-  {
-   "fieldname": "audit_budget_table",
-   "fieldtype": "Table",
-   "label": "Special Report Budget Table",
-   "options": "Service Budget"
-  },
-  {
-   "fieldname": "total_audit_budget",
-   "fieldtype": "Data",
-   "label": "Special Report VAT Budget",
-   "read_only": 1
-  },
-  {
-   "fieldname": "audit_write_up_down",
-   "fieldtype": "Data",
-   "label": "Special Report Write Up/Down"
-  },
-  {
-   "fieldname": "audit_expenses_section",
-   "fieldtype": "Section Break",
-   "label": "Special Report Expenses"
-  },
-  {
-   "default": "0",
-   "fieldname": "audit_per_diem",
-   "fieldtype": "Check",
-   "label": "Per Diem"
-  },
-  {
-   "fieldname": "audit_per_diem_amount",
-   "fieldtype": "Data",
-   "label": "Per Diem Amount"
-  },
-  {
-   "fieldname": "column_break_oyuhp",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "audit_cat",
-   "fieldtype": "Check",
-   "label": "Car"
-  },
-  {
-   "fieldname": "audit_car_amount",
-   "fieldtype": "Data",
-   "label": "Car Amount"
-  },
-  {
-   "fieldname": "column_break_ufaq0",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "audit_ticket",
-   "fieldtype": "Check",
-   "label": "Ticket"
-  },
-  {
-   "fieldname": "audit_ticket_amount",
-   "fieldtype": "Data",
-   "label": "Ticket Amount"
-  },
-  {
-   "fieldname": "column_break_ffxja",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "audit_other",
-   "fieldtype": "Check",
-   "label": "Other"
-  },
-  {
-   "fieldname": "audit_other_amount",
-   "fieldtype": "Data",
-   "label": "Other Amounts"
-  },
-  {
-   "fieldname": "total_audit_expenses",
-   "fieldtype": "Data",
-   "label": "Total Special Report Expenses",
-   "read_only": 1
-  },
-  {
-   "fieldname": "linked_doctype",
-   "fieldtype": "Link",
-   "label": "Linked Doctype",
-   "options": "DocType"
-  },
-  {
-   "fieldname": "column_break_kerm",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "linked_service",
-   "fieldtype": "Dynamic Link",
-   "label": "Linked Service",
-   "options": "linked_doctype"
-  },
-  {
-   "fieldname": "section_break_fkxk",
-   "fieldtype": "Section Break"
-  }
- ],
- "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2024-10-29 22:37:09.222197",
- "modified_by": "Administrator",
- "module": "Kreston",
- "name": "Special Report Service",
- "owner": "Administrator",
- "permissions": [
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "share": 1,
-   "write": 1
-  }
- ],
- "sort_field": "modified",
- "sort_order": "DESC",
- "states": []
+    "actions": [],
+    "allow_rename": 1,
+    "creation": "2024-10-05 00:16:56.767732",
+    "default_view": "List",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+     "linked_doctype",
+     "column_break_vdor",
+     "linked_service",
+     "section_break_oyst",
+     "audit_budget_table",
+     "total_audit_budget",
+     "audit_write_up_down",
+     "audit_expenses_section",
+     "audit_per_diem",
+     "audit_per_diem_amount",
+     "column_break_oyuhp",
+     "audit_cat",
+     "audit_car_amount",
+     "column_break_ufaq0",
+     "audit_ticket",
+     "audit_ticket_amount",
+     "column_break_ffxja",
+     "audit_other",
+     "audit_other_amount",
+     "total_audit_expenses",
+     "amended_from"
+    ],
+    "fields": [
+     {
+      "fieldname": "audit_budget_table",
+      "fieldtype": "Table",
+      "label": "Audit Budget Table",
+      "options": "Service Budget",
+      "permlevel": 1
+     },
+     {
+      "fieldname": "total_audit_budget",
+      "fieldtype": "Float",
+      "label": "Total Audit Budget",
+      "permlevel": 1,
+      "read_only": 1
+     },
+     {
+      "fieldname": "audit_write_up_down",
+      "fieldtype": "Float",
+      "label": "Audit Write Up/Down",
+      "permlevel": 2
+     },
+     {
+      "fieldname": "audit_expenses_section",
+      "fieldtype": "Section Break",
+      "label": "Audit Expenses"
+     },
+     {
+      "default": "0",
+      "fieldname": "audit_per_diem",
+      "fieldtype": "Check",
+      "label": "Per Diem",
+      "permlevel": 1
+     },
+     {
+      "depends_on": "eval:doc.audit_per_diem==1;",
+      "fieldname": "audit_per_diem_amount",
+      "fieldtype": "Float",
+      "label": "Per Diem Amount",
+      "mandatory_depends_on": "eval:doc.audit_per_diem==1;",
+      "permlevel": 1
+     },
+     {
+      "fieldname": "column_break_oyuhp",
+      "fieldtype": "Column Break"
+     },
+     {
+      "default": "0",
+      "fieldname": "audit_cat",
+      "fieldtype": "Check",
+      "label": "Car",
+      "permlevel": 1
+     },
+     {
+      "depends_on": "eval:doc.audit_cat==1;",
+      "fieldname": "audit_car_amount",
+      "fieldtype": "Float",
+      "label": "Car Amount",
+      "mandatory_depends_on": "eval:doc.audit_cat==1;",
+      "permlevel": 1
+     },
+     {
+      "fieldname": "column_break_ufaq0",
+      "fieldtype": "Column Break"
+     },
+     {
+      "default": "0",
+      "fieldname": "audit_ticket",
+      "fieldtype": "Check",
+      "label": "Ticket",
+      "permlevel": 1
+     },
+     {
+      "depends_on": "eval:doc.audit_ticket==1;",
+      "fieldname": "audit_ticket_amount",
+      "fieldtype": "Float",
+      "label": "Ticket Amount",
+      "mandatory_depends_on": "eval:doc.audit_ticket==1;",
+      "permlevel": 1
+     },
+     {
+      "fieldname": "column_break_ffxja",
+      "fieldtype": "Column Break"
+     },
+     {
+      "default": "0",
+      "fieldname": "audit_other",
+      "fieldtype": "Check",
+      "label": "Other",
+      "permlevel": 1
+     },
+     {
+      "depends_on": "eval:doc.audit_other==1;",
+      "fieldname": "audit_other_amount",
+      "fieldtype": "Float",
+      "label": "Other Amounts",
+      "mandatory_depends_on": "eval:doc.audit_other==1;",
+      "permlevel": 1
+     },
+     {
+      "fieldname": "total_audit_expenses",
+      "fieldtype": "Float",
+      "label": "Total Audit Expenses",
+      "permlevel": 1,
+      "read_only": 1
+     },
+     {
+      "default": "Lead",
+      "fieldname": "linked_doctype",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Linked Doctype",
+      "options": "DocType",
+      "permlevel": 1,
+      "read_only": 1,
+      "reqd": 1,
+      "unique": 1
+     },
+     {
+      "fieldname": "section_break_oyst",
+      "fieldtype": "Section Break"
+     },
+     {
+      "fieldname": "linked_service",
+      "fieldtype": "Dynamic Link",
+      "in_list_view": 1,
+      "label": "Linked Service",
+      "options": "linked_doctype",
+      "permlevel": 1,
+      "reqd": 1
+     },
+     {
+      "fieldname": "column_break_vdor",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "amended_from",
+      "fieldtype": "Link",
+      "label": "Amended From",
+      "no_copy": 1,
+      "options": "Special Report Service",
+      "print_hide": 1,
+      "read_only": 1,
+      "search_index": 1
+     }
+    ],
+    "index_web_pages_for_search": 1,
+    "is_submittable": 1,
+    "links": [],
+    "modified": "2024-11-29 21:50:47.748987",
+    "modified_by": "Administrator",
+    "module": "Kreston",
+    "name": "Special Report Service",
+    "owner": "Administrator",
+    "permissions": [
+     {
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1
+     }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": []
 }

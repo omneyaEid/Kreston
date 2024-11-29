@@ -4,6 +4,10 @@ from frappe import _
 
 def get_data(data):
     data = {
+        "fieldname": "linked_service",
+        "non_standard_fieldnames": {
+            "Lead": "linked_service",
+        },
         "transactions": [
             {
                 "label": _("Services Link"),
@@ -37,6 +41,8 @@ def get_data(data):
         ],
     }
 
-    data.update({"fieldname": "linked_service"})
+    # data.update({
+    #     "fieldname": "linked_service",  # The fieldname could be used to store which services are selected
+    # })
 
     return data

@@ -7,45 +7,63 @@
 {% include 'kreston/public/js/lead_handler/status_handler.js' %}
 
 frappe.ui.form.on('Grey Area', {
-    refresh: function(frm) {
+    refresh: function (frm) {
         fetchAndSetLeadTotals(frm);
         updateHeadingColor(frm);
+        frm.disable_form();
 
-        if (!frm.is_new() && !frm.doc.custom_archive){
-            frm.add_custom_button(__("Move To Pipline Content"), function(){
-                if (!frm.doc.new_pipeline_status && frm.doc.custom_win_status != "In-Complete"){
-                    frappe.throw(__("New Pipeline Status is required."));
-                }
+        if (!frm.is_new() && !frm.doc.custom_archive) {
+            frm.add_custom_button(__("Move To Pipeline Content"), function () {
+                // Show the dialog to add a new status
+                var dialog = new frappe.ui.Dialog({
+                    title: __("Add Pipeline Status"),
+                    fields: [
+                        {
+                            fieldname: 'status',
+                            label: __("Status"),
+                            fieldtype: 'Select',
+                            options: ["Prospect", "Proposal", "Lost Fit", "Lost Not Fit"],
+                            reqd: frm.doc.custom_win_status != "In-Complete",
+                        }
+                    ],
+                    primary_action_label: __('Set Status'),
+                    primary_action: function () {
+                        // Get the status and comment from the dialog
+                        var data = dialog.get_values();
 
-                if (frm.is_dirty()){
-                    frappe.throw(__("You have unsaved changes in this form. Please save before you continue."))
-                }
+                        if (data) {
+                            // Set the status in the grey area (could be a field or just for display)
+                            frm.set_value('new_pipeline_status', data.status);
+                            // Close the dialog
+                            dialog.hide();
 
-                // Call the server-side method to move the leads
-                frappe.call({
-                    method: "kreston.methods.grey_area.move_from_grey_area",
-                    args: {
-                        grey_area_names: [frm.doc.name]
-                    },
-                    callback: function (response) {
-                        if (response.message) {
-                            frappe.msgprint(response.message);
-                            frm.reload_doc();
+                            // Call the server-side method to move the leads
+                            frappe.call({
+                                method: "kreston.methods.grey_area.move_from_grey_area",
+                                args: {
+                                    grey_area_names: [frm.doc.name]
+                                },
+                                callback: function (response) {
+                                    if (response.message) {
+                                        frappe.msgprint(response.message);
+                                        frm.reload_doc();
+                                    }
+                                }
+                            });
                         }
                     }
                 });
+
+                // Show the dialog
+                dialog.show();
             });
         }
-
-        if (frm.doc.custom_archive){
-            frm.disable_form();
-        }
     },
 
-    custom_audit: function(frm){
+    custom_audit: function (frm) {
         updateHeadingColor(frm);
     },
-    custom_pipeline_status: function(frm){
+    custom_pipeline_status: function (frm) {
         updateStatusHandler(frm);
     },
     after_save: function (frm) {

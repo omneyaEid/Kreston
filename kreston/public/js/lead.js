@@ -51,6 +51,7 @@ frappe.ui.form.on("Lead", {
     after_save: function (frm) {
         decisionHandler(frm);
         saveStatusHandler(frm);
+        frm.save()
     },
     custom_add1: function (frm) {
         createAuditDialog(frm, "Add Audit Service", "Audit Service", "Audit");
@@ -84,7 +85,8 @@ frappe.ui.form.on("Lead", {
     },
     custom_add11: function (frm) {
         createAuditDialog(frm, "Add SOM Service", "SOM Service", "SOM");
-    }, custom_add12: function (frm) {
+    }, 
+    custom_add12: function (frm) {
         createAuditDialog(frm, "Add VDP SP Service", "VDP SP Service", "VDP SP");
     }
 });

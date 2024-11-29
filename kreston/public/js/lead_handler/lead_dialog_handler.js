@@ -179,7 +179,8 @@ function createAuditDialog(frm, title, doctype, label) {
                                 audit_ticket_amount: values.audit_ticket_amount,
                                 audit_other: values.audit_other,
                                 audit_other_amount: values.audit_other_amount,
-                                total_audit_expenses: values.total_audit_expenses
+                                total_audit_expenses: values.total_audit_expenses,
+                                custom_service_type : label
                             }
                         },
                         callback: function (response) {

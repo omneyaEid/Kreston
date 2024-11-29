@@ -1,0 +1,94 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-11-22 19:33:05.732276",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "task_type",
+  "client",
+  "service",
+  "planned_hours",
+  "from_time",
+  "to_time",
+  "actual_hours",
+  "cost"
+ ],
+ "fields": [
+  {
+   "fieldname": "task_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Task Type",
+   "options": "PMO Task Types",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.task_type == \"Work\"",
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Client",
+   "mandatory_depends_on": "eval:doc.task_type == \"Work\"",
+   "options": "PMO Client"
+  },
+  {
+   "depends_on": "eval:doc.task_type == \"Work\"",
+   "fieldname": "service",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Service",
+   "mandatory_depends_on": "eval:doc.task_type == \"Work\"",
+   "options": "\nAudit Service\nAudit SP Service\nZ Cases Service\nZDP SP Service\nVAT Service\nVAT Cases Service\nAUP Service\nLC Service\nZakat Service\nTax Service\nSOM Service\nVDP SP Service"
+  },
+  {
+   "fieldname": "planned_hours",
+   "fieldtype": "Data",
+   "label": "Planned Hours",
+   "mandatory_depends_on": "eval:doc.task_type == \"Work\""
+  },
+  {
+   "fieldname": "from_time",
+   "fieldtype": "Time",
+   "label": "From Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "to_time",
+   "fieldtype": "Time",
+   "label": "To Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "actual_hours",
+   "fieldtype": "Data",
+   "label": "Actual Hours",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "task_type.cost",
+   "fieldname": "cost",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Cost",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-11-25 01:16:56.429434",
+ "modified_by": "Administrator",
+ "module": "Kreston",
+ "name": "Daily TimeSheet Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

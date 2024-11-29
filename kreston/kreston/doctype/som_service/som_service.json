@@ -136,14 +136,13 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-29 22:35:28.908451",
+ "modified": "2024-11-29 21:52:18.035171",
  "modified_by": "Administrator",
  "module": "Kreston",
  "name": "SOM Service",
  "owner": "Administrator",
  "permissions": [
   {
-   "create": 1,
    "delete": 1,
    "email": 1,
    "export": 1,
@@ -151,8 +150,7 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
-   "share": 1,
-   "write": 1
+   "share": 1
   }
  ],
  "sort_field": "modified",

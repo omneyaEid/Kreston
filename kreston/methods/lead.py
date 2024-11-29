@@ -16,7 +16,7 @@ services = [
         "Tax Service",
         "SOM Service",
         "VDP SP Service",
-    ]
+]
 
 @frappe.whitelist()
 def calc_lead_totals(doctype, name):
@@ -53,9 +53,6 @@ def calc_lead_totals(doctype, name):
         "audit_write_up_down": audit_write_up_down,
     }
 
-
-import json
-from frappe.utils import getdate
 
 @frappe.whitelist()
 def move_to_grey_area(lead_names):

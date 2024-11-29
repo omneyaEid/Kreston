@@ -1,0 +1,196 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-10-05 00:19:54.685364",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "linked_doctype",
+  "column_break_lhyp",
+  "linked_service",
+  "section_break_psyg",
+  "audit_budget_table",
+  "section_break_hind",
+  "total_audit_budget",
+  "audit_write_up_down",
+  "column_break_jhyu",
+  "total_hours",
+  "risk_management_level",
+  "audit_expenses_section",
+  "audit_per_diem",
+  "audit_per_diem_amount",
+  "column_break_oyuhp",
+  "audit_cat",
+  "audit_car_amount",
+  "column_break_ufaq0",
+  "audit_ticket",
+  "audit_ticket_amount",
+  "column_break_ffxja",
+  "audit_other",
+  "audit_other_amount",
+  "total_audit_expenses",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "linked_doctype",
+   "fieldtype": "Link",
+   "label": "Linked Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "column_break_lhyp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "linked_service",
+   "fieldtype": "Dynamic Link",
+   "label": "Linked Service",
+   "options": "linked_doctype"
+  },
+  {
+   "fieldname": "section_break_psyg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "audit_budget_table",
+   "fieldtype": "Table",
+   "label": "VAT Budget Table",
+   "options": "Service Budget"
+  },
+  {
+   "fieldname": "total_audit_budget",
+   "fieldtype": "Float",
+   "label": "Total VAT Budget",
+   "read_only": 1
+  },
+  {
+   "fieldname": "audit_write_up_down",
+   "fieldtype": "Float",
+   "label": "VAT Write Up/Down"
+  },
+  {
+   "fieldname": "audit_expenses_section",
+   "fieldtype": "Section Break",
+   "label": "VAT Expenses"
+  },
+  {
+   "default": "0",
+   "fieldname": "audit_per_diem",
+   "fieldtype": "Check",
+   "label": "Per Diem"
+  },
+  {
+   "fieldname": "audit_per_diem_amount",
+   "fieldtype": "Float",
+   "label": "Per Diem Amount"
+  },
+  {
+   "fieldname": "column_break_oyuhp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "audit_cat",
+   "fieldtype": "Check",
+   "label": "Car"
+  },
+  {
+   "fieldname": "audit_car_amount",
+   "fieldtype": "Float",
+   "label": "Car Amount"
+  },
+  {
+   "fieldname": "column_break_ufaq0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "audit_ticket",
+   "fieldtype": "Check",
+   "label": "Ticket"
+  },
+  {
+   "fieldname": "audit_ticket_amount",
+   "fieldtype": "Float",
+   "label": "Ticket Amount"
+  },
+  {
+   "fieldname": "column_break_ffxja",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "audit_other",
+   "fieldtype": "Check",
+   "label": "Other"
+  },
+  {
+   "fieldname": "audit_other_amount",
+   "fieldtype": "Float",
+   "label": "Other Amounts"
+  },
+  {
+   "fieldname": "total_audit_expenses",
+   "fieldtype": "Float",
+   "label": "Total VAT Expenses",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_hind",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_jhyu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_hours",
+   "fieldtype": "Float",
+   "label": "Total Hours"
+  },
+  {
+   "fieldname": "risk_management_level",
+   "fieldtype": "Select",
+   "label": "Risk Management Level",
+   "options": "\nLow\nModorate\nHigh"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "VAT Service",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-11-30 01:33:18.610707",
+ "modified_by": "Administrator",
+ "module": "Services",
+ "name": "VAT Service",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

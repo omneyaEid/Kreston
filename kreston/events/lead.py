@@ -20,7 +20,7 @@ def on_update(doc, method=None):
     if (status_updated or new_status) and doc.custom_pipeline_status == "Win":
         if doc.custom_pipeline_status == "Win":
             # Set the custom_client_number
-            doc.custom_client_number = 400 + get_last_sequance()
+            doc.custom_client_number =  int(get_last_sequance())
         else:
             doc.custom_client_number = ""
     
@@ -74,4 +74,8 @@ def validate(doc, method=None):
 
 def get_last_sequance():
     # Count the number of Leads with custom_pipeline_status set to "Win"
-    return get_count(doctype="Lead", filters={"custom_pipeline_status": "Win"}, cache=True)
+    all_clients = frappe.get_all("PMO Client", limit_page_length=1, order_by="creation desc", pluck="name")
+    if len(all_clients):
+        return int(all_clients[0]) + 1
+    else:
+        return 400

@@ -1,0 +1,227 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:PMOA-{client}-{service_type}-{#####}",
+ "creation": "2024-11-22 22:02:42.292341",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_idtz",
+  "client",
+  "service_type",
+  "column_break_yufu",
+  "client_name",
+  "section_break_xcbw",
+  "p1",
+  "p3",
+  "p5",
+  "column_break_negp",
+  "p2",
+  "p4",
+  "section_break_ckjd",
+  "total_budget_hour",
+  "variances_by_number",
+  "column_break_vypr",
+  "total_actual_hour",
+  "variances_percentage",
+  "assignment_details_section",
+  "assignment_date_in",
+  "job_status",
+  "column_break_gcrx",
+  "assignment_date_out",
+  "progress",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Client",
+   "options": "PMO Client"
+  },
+  {
+   "fieldname": "column_break_yufu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "client.custom_client_name",
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Client Name"
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Service Type"
+  },
+  {
+   "fieldname": "section_break_idtz",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "section_break_xcbw",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "p1",
+   "fieldtype": "Link",
+   "label": "P1",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "p3",
+   "fieldtype": "Link",
+   "label": "P3",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "p5",
+   "fieldtype": "Link",
+   "label": "P5",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_negp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "p2",
+   "fieldtype": "Link",
+   "label": "P2",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "p4",
+   "fieldtype": "Link",
+   "label": "P4",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "section_break_ckjd",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "total_budget_hour",
+   "fieldtype": "Float",
+   "label": "Total Budget Hour"
+  },
+  {
+   "fieldname": "variances_by_number",
+   "fieldtype": "Float",
+   "label": "Variances by Number"
+  },
+  {
+   "fieldname": "column_break_vypr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_actual_hour",
+   "fieldtype": "Float",
+   "label": "Total Actual Hour"
+  },
+  {
+   "fieldname": "variances_percentage",
+   "fieldtype": "Float",
+   "label": "Variances Percentage"
+  },
+  {
+   "fieldname": "assignment_details_section",
+   "fieldtype": "Section Break",
+   "label": "Assignment Details"
+  },
+  {
+   "fieldname": "assignment_date_in",
+   "fieldtype": "Date",
+   "label": "Assignment Date In",
+   "reqd": 1
+  },
+  {
+   "fieldname": "job_status",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Job Status",
+   "options": "Job Status",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_gcrx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assignment_date_out",
+   "fieldtype": "Date",
+   "label": "Assignment Date Out",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "job_status.progression_percentage",
+   "fieldname": "progress",
+   "fieldtype": "Percent",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Progress",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "PMO Assignment Details",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-11-29 22:05:33.852734",
+ "modified_by": "Administrator",
+ "module": "Kreston",
+ "name": "PMO Assignment Details",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
